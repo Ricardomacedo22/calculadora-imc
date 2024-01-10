@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora iMC</title>
+</head>
+<body>
+
+<div id="output_total">
+<ul class="inputs">
+   <h1 style="position: relative; left: 45px">Calculadora IMC</h1>
+   <fieldset>
+    <input type="radio" value="homem" name="homem">
+        <label for="homem">Homem</label> &nbsp&nbsp&nbsp&nbsp
+
+    <input type="radio" value="mulher"  name="homem">
+        <label for="mulher">Mulher</label>
+
+    <br><br><br>
+
+        <label for="idade">Idade (irrelevante):</label> <br>
+    <input type="number" name="idade" id="idade">
+
+    <br><br><br>
+
+        <label for="altura">Altura (Cm):</label> <br>
+    <input type="number" name="altura_input" id="altura_input">
+
+    <br><br><br>
+
+        <label for="peso">Peso (kg):</label><br>
+    <input type="number" name="peso_input" id="peso_input"> <br><br>
+
+    <button type="button" name="calcular_btn" id="calcular_btn">Calcular</button>
+
+    <input type="text" name="resultado_final" id="resultado_final" readonly>
+
+    <button type="reset" id="erase" onclick="location.reload()">C</button>
+</ul>
+</fieldset>
+
+    <br><br><br><br>
+
+    <style>
+        label{
+            font-size: 25px;
+        }
+        input{
+            font-size: 25px;
+            border-radius: 10px;
+            background-color: rgba(95, 158, 160, 0.295);
+        }
+        button{
+            font-size: 25px;
+        }
+        #resultado_final{
+            width: 150px;
+        }
+
+        #output_total, table {
+            display:flex;
+        }
+
+        .inputs{
+            max-width: fit-content;
+        }
+
+        #output_total{
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            top: 200px;
+        }
+
+        fieldset{
+            border-radius: 25px
+        }
+        table{
+            position:relative; 
+            top: 30px;
+        }
+
+        body{
+            background-color: rgba(95, 158, 160, 0.61);
+        }
+
+        #erase, #resultado_final, #calcular_btn{
+            background-color: rgba(95, 158, 160, 0.295) ;
+        }
+
+        #calcular_btn, #erase{
+            border-radius: 15px;
+        }
+
+
+    </style>
+
+
+    <table class="table">
+        <tr> 
+            <td>Classificção</td> <td>IMC</td>
+         </tr>
+
+        <tr> 
+            <td>Abaixo do peso</td> <td> <= 18.5 </td> 
+        </tr>
+
+        <tr> 
+            <td>Peso normal</td> <td> 18.5 - 24.9 </td> 
+        </tr>
+
+        <tr> 
+            <td>Sobrepeso</td> <td> 25 - 29.9 </td>
+        </tr>
+
+        <tr> 
+            <td>obesidade grau I</td> <td> 30 - 34.9 </td>
+         </tr>
+
+        <tr> 
+            <td>obesidade grau II</td> <td> 35 - 39.9 </td>
+        </tr>
+
+        <tr>
+            <td>obesidade grau III ou Mórbida</td> <td> >= 40 </td>
+        </tr>
+    </table>
+</div>
+
+    <style>
+     tr,  td{
+        border: 1px solid black;
+        position: relative; left: 15px; 
+        text-align: center;
+        font-size: 30px;
+        width: auto
+        }
+    </style>
+
+    <script> 
+    let calcular_btn = document.getElementById('calcular_btn');
+
+    calcular_btn.addEventListener('click', function(){
+
+        let peso = document.getElementById ('peso_input').value;
+        let altura = document.getElementById('altura_input').value;
+        let resultado = (peso/((altura*altura) / 10000));
+        console.log(peso)
+        console.log(altura)
+        document.getElementById('resultado_final').value = resultado.toFixed(1)  /* para retirar o arredondamento basta restirar " Math.round " + retirar parentises
+                                                                                             e deixar apenas  resultado   */
+    } )
+
+    </script>
+        
+</body>
+</html>
